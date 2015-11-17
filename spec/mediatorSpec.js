@@ -13,7 +13,7 @@ describe('Mediator', function () {
 
   });
 
-  describe('You can subscrire and unsubscribe', function() {
+  describe('You can subscrire, unsubscribe and publish', function() {
 
     it('it allows you to subscribe to some event', function() {
       mediator.subscribeTo('I\'m a event', fn);
@@ -25,7 +25,20 @@ describe('Mediator', function () {
       expect(Object.keys(mediator.subscribers).length).toEqual(0);
     });
 
+    it('it allows you to subscribe and publish some event', function() {
+      var a1 = 0,
+          a2 = 0,
+          f1=function(){a1++},
+          f2=function(){a2++};
+          mediator.subscribeTo('eventName', f1);
+          mediator.subscribeTo('eventName', f2);
+          mediator.publish('eventName', {});
+      expect(a1).toEqual(1);
+      expect(a2).toEqual(1);
+    });
   });
 
+
 });
+
 
