@@ -15,12 +15,12 @@ describe('Mediator', function () {
 
   describe('You can subscrire and unsubscribe', function() {
 
-    it('allow you to subscribe to some event', function() {
+    it('it allows you to subscribe to some event', function() {
       mediator.subscribeTo('I\'m a event', fn);
       expect(Object.keys(mediator.subscribers).length).toEqual(1);
     });
 
-    it('allow you to subscribe to some event', function() {
+    it('it allows you to unsubscribe from some event', function() {
       mediator.unsubscribeFrom('I\'m a event', fn);
       expect(Object.keys(mediator.subscribers).length).toEqual(0);
     });
